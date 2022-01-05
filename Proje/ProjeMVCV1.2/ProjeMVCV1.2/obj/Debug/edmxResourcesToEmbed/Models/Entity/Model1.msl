@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HusteDbModelStoreContainer" CdmEntityContainer="HusteDbEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HusteDbModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblBizeKesilenFatura">
+      <EntityTypeMapping TypeName="HusteDbModel.TblBizeKesilenFatura">
+        <MappingFragment StoreEntitySet="TblBizeKesilenFatura">
+          <ScalarProperty Name="GelenFaturaTarih" ColumnName="GelenFaturaTarih" />
+          <ScalarProperty Name="BizeKesilenFaturaID" ColumnName="BizeKesilenFaturaID" />
+          <ScalarProperty Name="VergiNo" ColumnName="VergiNo" />
+          <ScalarProperty Name="GelenFaturaUnvan" ColumnName="GelenFaturaUnvan" />
+          <ScalarProperty Name="GelenFaturaVergiDairesi" ColumnName="GelenFaturaVergiDairesi" />
+          <ScalarProperty Name="GelenFaturaAdres" ColumnName="GelenFaturaAdres" />
+          <ScalarProperty Name="GelenFaturaVergiNo" ColumnName="GelenFaturaVergiNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblBizeKesilenFaturaIcerik">
+      <EntityTypeMapping TypeName="HusteDbModel.TblBizeKesilenFaturaIcerik">
+        <MappingFragment StoreEntitySet="TblBizeKesilenFaturaIcerik">
+          <ScalarProperty Name="GelenFaturaID" ColumnName="GelenFaturaID" />
+          <ScalarProperty Name="GelenFaturaNo" ColumnName="GelenFaturaNo" />
+          <ScalarProperty Name="GelenFaturaUrunAdi" ColumnName="GelenFaturaUrunAdi" />
+          <ScalarProperty Name="GelenFaturaUrunMiktar" ColumnName="GelenFaturaUrunMiktar" />
+          <ScalarProperty Name="GelenFaturaBirimFiyat" ColumnName="GelenFaturaBirimFiyat" />
+          <ScalarProperty Name="GelenFaturaKDVOrani" ColumnName="GelenFaturaKDVOrani" />
+          <ScalarProperty Name="GelenFaturaSatirNo" ColumnName="GelenFaturaSatirNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblHesap">
+      <EntityTypeMapping TypeName="HusteDbModel.TblHesap">
+        <MappingFragment StoreEntitySet="TblHesap">
+          <ScalarProperty Name="VergiNo" ColumnName="VergiNo" />
+          <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="VergiDairesi" ColumnName="VergiDairesi" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblKesilenFatura">
+      <EntityTypeMapping TypeName="HusteDbModel.TblKesilenFatura">
+        <MappingFragment StoreEntitySet="TblKesilenFatura">
+          <ScalarProperty Name="GidenFaturaTarih" ColumnName="GidenFaturaTarih" />
+          <ScalarProperty Name="KesilenFaturaID" ColumnName="KesilenFaturaID" />
+          <ScalarProperty Name="VergiNo" ColumnName="VergiNo" />
+          <ScalarProperty Name="GidenFaturaUnvan" ColumnName="GidenFaturaUnvan" />
+          <ScalarProperty Name="GidenFaturaVergiDairesi" ColumnName="GidenFaturaVergiDairesi" />
+          <ScalarProperty Name="GidenFaturaAdres" ColumnName="GidenFaturaAdres" />
+          <ScalarProperty Name="GidenFaturaVergiNo" ColumnName="GidenFaturaVergiNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblKesilenFaturaIcerik">
+      <EntityTypeMapping TypeName="HusteDbModel.TblKesilenFaturaIcerik">
+        <MappingFragment StoreEntitySet="TblKesilenFaturaIcerik">
+          <ScalarProperty Name="GidenFaturaID" ColumnName="GidenFaturaID" />
+          <ScalarProperty Name="KesilanFaturaSatirNo" ColumnName="KesilanFaturaSatirNo" />
+          <ScalarProperty Name="GidenFaturaNo" ColumnName="GidenFaturaNo" />
+          <ScalarProperty Name="GidenFaturaUrunAdi" ColumnName="GidenFaturaUrunAdi" />
+          <ScalarProperty Name="GidenFaturaUrunMiktari" ColumnName="GidenFaturaUrunMiktari" />
+          <ScalarProperty Name="GidenFaturaBirimFiyati" ColumnName="GidenFaturaBirimFiyati" />
+          <ScalarProperty Name="GidenFaturaKDVOrani" ColumnName="GidenFaturaKDVOrani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblVarliklar">
+      <EntityTypeMapping TypeName="HusteDbModel.TblVarliklar">
+        <MappingFragment StoreEntitySet="TblVarliklar">
+          <ScalarProperty Name="VarlikID" ColumnName="VarlikID" />
+          <ScalarProperty Name="KullaniciVergiNo" ColumnName="KullaniciVergiNo" />
+          <ScalarProperty Name="Girdiler" ColumnName="Girdiler" />
+          <ScalarProperty Name="Ciktilar" ColumnName="Ciktilar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HusteDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TblBizeKesilenFatura">
+          <Key>
+            <PropertyRef Name="BizeKesilenFaturaID" />
+          </Key>
+          <Property Name="BizeKesilenFaturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VergiNo" Type="bigint" />
+          <Property Name="GelenFaturaUnvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="GelenFaturaVergiDairesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="GelenFaturaAdres" Type="nvarchar" MaxLength="50" />
+          <Property Name="GelenFaturaVergiNo" Type="int" />
+          <Property Name="GelenFaturaTarih" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblBizeKesilenFaturaIcerik">
+          <Key>
+            <PropertyRef Name="GelenFaturaID" />
+          </Key>
+          <Property Name="GelenFaturaNo" Type="int" Nullable="false" />
+          <Property Name="GelenFaturaUrunAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="GelenFaturaUrunMiktar" Type="int" />
+          <Property Name="GelenFaturaBirimFiyat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GelenFaturaKDVOrani" Type="int" />
+          <Property Name="GelenFaturaSatirNo" Type="int" Nullable="false" />
+          <Property Name="GelenFaturaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblHesap">
+          <Key>
+            <PropertyRef Name="VergiNo" />
+          </Key>
+          <Property Name="VergiNo" Type="bigint" Nullable="false" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="100" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="100" />
+          <Property Name="VergiDairesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblKesilenFatura">
+          <Key>
+            <PropertyRef Name="KesilenFaturaID" />
+          </Key>
+          <Property Name="KesilenFaturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VergiNo" Type="bigint" />
+          <Property Name="GidenFaturaUnvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="GidenFaturaVergiDairesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="GidenFaturaAdres" Type="nvarchar" MaxLength="50" />
+          <Property Name="GidenFaturaVergiNo" Type="bigint" />
+          <Property Name="GidenFaturaTarih" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="TblKesilenFaturaIcerik">
+          <Key>
+            <PropertyRef Name="GidenFaturaID" />
+          </Key>
+          <Property Name="KesilanFaturaSatirNo" Type="int" Nullable="false" />
+          <Property Name="GidenFaturaNo" Type="int" Nullable="false" />
+          <Property Name="GidenFaturaUrunAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="GidenFaturaUrunMiktari" Type="int" />
+          <Property Name="GidenFaturaBirimFiyati" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GidenFaturaKDVOrani" Type="int" />
+          <Property Name="GidenFaturaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblVarliklar">
+          <Key>
+            <PropertyRef Name="VarlikID" />
+          </Key>
+          <Property Name="VarlikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciVergiNo" Type="bigint" />
+          <Property Name="Girdiler" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Ciktilar" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK_TblBizeKesilenFatura_TblHesap">
+          <End Role="TblHesap" Type="Self.TblHesap" Multiplicity="0..1" />
+          <End Role="TblBizeKesilenFatura" Type="Self.TblBizeKesilenFatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHesap">
+              <PropertyRef Name="VergiNo" />
+            </Principal>
+            <Dependent Role="TblBizeKesilenFatura">
+              <PropertyRef Name="VergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1">
+          <End Role="TblBizeKesilenFatura" Type="Self.TblBizeKesilenFatura" Multiplicity="1" />
+          <End Role="TblBizeKesilenFaturaIcerik" Type="Self.TblBizeKesilenFaturaIcerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBizeKesilenFatura">
+              <PropertyRef Name="BizeKesilenFaturaID" />
+            </Principal>
+            <Dependent Role="TblBizeKesilenFaturaIcerik">
+              <PropertyRef Name="GelenFaturaNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblKesilenFatura_TblHesap">
+          <End Role="TblHesap" Type="Self.TblHesap" Multiplicity="0..1" />
+          <End Role="TblKesilenFatura" Type="Self.TblKesilenFatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHesap">
+              <PropertyRef Name="VergiNo" />
+            </Principal>
+            <Dependent Role="TblKesilenFatura">
+              <PropertyRef Name="VergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblKesilenFaturaIcerik_TblKesilenFatura">
+          <End Role="TblKesilenFatura" Type="Self.TblKesilenFatura" Multiplicity="1" />
+          <End Role="TblKesilenFaturaIcerik" Type="Self.TblKesilenFaturaIcerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblKesilenFatura">
+              <PropertyRef Name="KesilenFaturaID" />
+            </Principal>
+            <Dependent Role="TblKesilenFaturaIcerik">
+              <PropertyRef Name="GidenFaturaNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblVarliklar_TblHesap">
+          <End Role="TblHesap" Type="Self.TblHesap" Multiplicity="0..1" />
+          <End Role="TblVarliklar" Type="Self.TblVarliklar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHesap">
+              <PropertyRef Name="VergiNo" />
+            </Principal>
+            <Dependent Role="TblVarliklar">
+              <PropertyRef Name="KullaniciVergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HusteDbModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBizeKesilenFatura" EntityType="Self.TblBizeKesilenFatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBizeKesilenFaturaIcerik" EntityType="Self.TblBizeKesilenFaturaIcerik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblHesap" EntityType="Self.TblHesap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKesilenFatura" EntityType="Self.TblKesilenFatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKesilenFaturaIcerik" EntityType="Self.TblKesilenFaturaIcerik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblVarliklar" EntityType="Self.TblVarliklar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblBizeKesilenFatura_TblHesap" Association="Self.FK_TblBizeKesilenFatura_TblHesap">
+            <End Role="TblHesap" EntitySet="TblHesap" />
+            <End Role="TblBizeKesilenFatura" EntitySet="TblBizeKesilenFatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1" Association="Self.FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1">
+            <End Role="TblBizeKesilenFatura" EntitySet="TblBizeKesilenFatura" />
+            <End Role="TblBizeKesilenFaturaIcerik" EntitySet="TblBizeKesilenFaturaIcerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblKesilenFatura_TblHesap" Association="Self.FK_TblKesilenFatura_TblHesap">
+            <End Role="TblHesap" EntitySet="TblHesap" />
+            <End Role="TblKesilenFatura" EntitySet="TblKesilenFatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblKesilenFaturaIcerik_TblKesilenFatura" Association="Self.FK_TblKesilenFaturaIcerik_TblKesilenFatura">
+            <End Role="TblKesilenFatura" EntitySet="TblKesilenFatura" />
+            <End Role="TblKesilenFaturaIcerik" EntitySet="TblKesilenFaturaIcerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblVarliklar_TblHesap" Association="Self.FK_TblVarliklar_TblHesap">
+            <End Role="TblHesap" EntitySet="TblHesap" />
+            <End Role="TblVarliklar" EntitySet="TblVarliklar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HusteDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TblBizeKesilenFatura">
+          <Key>
+            <PropertyRef Name="BizeKesilenFaturaID" />
+          </Key>
+          <Property Name="BizeKesilenFaturaID" Type="Int32" Nullable="false" />
+          <Property Name="VergiNo" Type="Int64" />
+          <Property Name="GelenFaturaUnvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GelenFaturaVergiDairesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GelenFaturaAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GelenFaturaVergiNo" Type="Int32" />
+          <NavigationProperty Name="TblHesap" Relationship="Self.FK_TblBizeKesilenFatura_TblHesap" FromRole="TblBizeKesilenFatura" ToRole="TblHesap" />
+          <NavigationProperty Name="TblBizeKesilenFaturaIcerik" Relationship="Self.FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1" FromRole="TblBizeKesilenFatura" ToRole="TblBizeKesilenFaturaIcerik" />
+          <Property Name="GelenFaturaTarih" Type="DateTime" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblBizeKesilenFaturaIcerik">
+          <Key>
+            <PropertyRef Name="GelenFaturaID" />
+          </Key>
+          <Property Name="GelenFaturaNo" Type="Int32" Nullable="false" />
+          <Property Name="GelenFaturaUrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GelenFaturaUrunMiktar" Type="Int32" />
+          <Property Name="GelenFaturaBirimFiyat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GelenFaturaKDVOrani" Type="Int32" />
+          <Property Name="GelenFaturaSatirNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TblBizeKesilenFatura" Relationship="Self.FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1" FromRole="TblBizeKesilenFaturaIcerik" ToRole="TblBizeKesilenFatura" />
+          <Property Name="GelenFaturaID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblHesap">
+          <Key>
+            <PropertyRef Name="VergiNo" />
+          </Key>
+          <Property Name="VergiNo" Type="Int64" Nullable="false" />
+          <Property Name="Unvan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VergiDairesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBizeKesilenFatura" Relationship="Self.FK_TblBizeKesilenFatura_TblHesap" FromRole="TblHesap" ToRole="TblBizeKesilenFatura" />
+          <NavigationProperty Name="TblKesilenFatura" Relationship="Self.FK_TblKesilenFatura_TblHesap" FromRole="TblHesap" ToRole="TblKesilenFatura" />
+          <NavigationProperty Name="TblVarliklar" Relationship="Self.FK_TblVarliklar_TblHesap" FromRole="TblHesap" ToRole="TblVarliklar" />
+        </EntityType>
+        <EntityType Name="TblKesilenFatura">
+          <Key>
+            <PropertyRef Name="KesilenFaturaID" />
+          </Key>
+          <Property Name="KesilenFaturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VergiNo" Type="Int64" />
+          <Property Name="GidenFaturaUnvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GidenFaturaVergiDairesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GidenFaturaAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GidenFaturaVergiNo" Type="Int64" />
+          <NavigationProperty Name="TblHesap" Relationship="Self.FK_TblKesilenFatura_TblHesap" FromRole="TblKesilenFatura" ToRole="TblHesap" />
+          <NavigationProperty Name="TblKesilenFaturaIcerik" Relationship="Self.FK_TblKesilenFaturaIcerik_TblKesilenFatura" FromRole="TblKesilenFatura" ToRole="TblKesilenFaturaIcerik" />
+          <Property Name="GidenFaturaTarih" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="TblKesilenFaturaIcerik">
+          <Key>
+            <PropertyRef Name="GidenFaturaID" />
+          </Key>
+          <Property Name="KesilanFaturaSatirNo" Type="Int32" Nullable="false" />
+          <Property Name="GidenFaturaNo" Type="Int32" Nullable="false" />
+          <Property Name="GidenFaturaUrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GidenFaturaUrunMiktari" Type="Int32" />
+          <Property Name="GidenFaturaBirimFiyati" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GidenFaturaKDVOrani" Type="Int32" />
+          <NavigationProperty Name="TblKesilenFatura" Relationship="Self.FK_TblKesilenFaturaIcerik_TblKesilenFatura" FromRole="TblKesilenFaturaIcerik" ToRole="TblKesilenFatura" />
+          <Property Name="GidenFaturaID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblVarliklar">
+          <Key>
+            <PropertyRef Name="VarlikID" />
+          </Key>
+          <Property Name="VarlikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciVergiNo" Type="Int64" />
+          <Property Name="Girdiler" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Ciktilar" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="TblHesap" Relationship="Self.FK_TblVarliklar_TblHesap" FromRole="TblVarliklar" ToRole="TblHesap" />
+        </EntityType>
+        <Association Name="FK_TblBizeKesilenFatura_TblHesap">
+          <End Role="TblHesap" Type="Self.TblHesap" Multiplicity="0..1" />
+          <End Role="TblBizeKesilenFatura" Type="Self.TblBizeKesilenFatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHesap">
+              <PropertyRef Name="VergiNo" />
+            </Principal>
+            <Dependent Role="TblBizeKesilenFatura">
+              <PropertyRef Name="VergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1">
+          <End Role="TblBizeKesilenFatura" Type="Self.TblBizeKesilenFatura" Multiplicity="1" />
+          <End Role="TblBizeKesilenFaturaIcerik" Type="Self.TblBizeKesilenFaturaIcerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBizeKesilenFatura">
+              <PropertyRef Name="BizeKesilenFaturaID" />
+            </Principal>
+            <Dependent Role="TblBizeKesilenFaturaIcerik">
+              <PropertyRef Name="GelenFaturaNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblKesilenFatura_TblHesap">
+          <End Role="TblHesap" Type="Self.TblHesap" Multiplicity="0..1" />
+          <End Role="TblKesilenFatura" Type="Self.TblKesilenFatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHesap">
+              <PropertyRef Name="VergiNo" />
+            </Principal>
+            <Dependent Role="TblKesilenFatura">
+              <PropertyRef Name="VergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblVarliklar_TblHesap">
+          <End Role="TblHesap" Type="Self.TblHesap" Multiplicity="0..1" />
+          <End Role="TblVarliklar" Type="Self.TblVarliklar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHesap">
+              <PropertyRef Name="VergiNo" />
+            </Principal>
+            <Dependent Role="TblVarliklar">
+              <PropertyRef Name="KullaniciVergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblKesilenFaturaIcerik_TblKesilenFatura">
+          <End Role="TblKesilenFatura" Type="Self.TblKesilenFatura" Multiplicity="1" />
+          <End Role="TblKesilenFaturaIcerik" Type="Self.TblKesilenFaturaIcerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblKesilenFatura">
+              <PropertyRef Name="KesilenFaturaID" />
+            </Principal>
+            <Dependent Role="TblKesilenFaturaIcerik">
+              <PropertyRef Name="GidenFaturaNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HusteDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TblBizeKesilenFatura" EntityType="Self.TblBizeKesilenFatura" />
+          <EntitySet Name="TblBizeKesilenFaturaIcerik" EntityType="Self.TblBizeKesilenFaturaIcerik" />
+          <EntitySet Name="TblHesap" EntityType="Self.TblHesap" />
+          <EntitySet Name="TblKesilenFatura" EntityType="Self.TblKesilenFatura" />
+          <EntitySet Name="TblKesilenFaturaIcerik" EntityType="Self.TblKesilenFaturaIcerik" />
+          <EntitySet Name="TblVarliklar" EntityType="Self.TblVarliklar" />
+          <AssociationSet Name="FK_TblBizeKesilenFatura_TblHesap" Association="Self.FK_TblBizeKesilenFatura_TblHesap">
+            <End Role="TblHesap" EntitySet="TblHesap" />
+            <End Role="TblBizeKesilenFatura" EntitySet="TblBizeKesilenFatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1" Association="Self.FK_TblBizeKesilenFaturaIcerik_TblBizeKesilenFatura1">
+            <End Role="TblBizeKesilenFatura" EntitySet="TblBizeKesilenFatura" />
+            <End Role="TblBizeKesilenFaturaIcerik" EntitySet="TblBizeKesilenFaturaIcerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblKesilenFatura_TblHesap" Association="Self.FK_TblKesilenFatura_TblHesap">
+            <End Role="TblHesap" EntitySet="TblHesap" />
+            <End Role="TblKesilenFatura" EntitySet="TblKesilenFatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblVarliklar_TblHesap" Association="Self.FK_TblVarliklar_TblHesap">
+            <End Role="TblHesap" EntitySet="TblHesap" />
+            <End Role="TblVarliklar" EntitySet="TblVarliklar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblKesilenFaturaIcerik_TblKesilenFatura" Association="Self.FK_TblKesilenFaturaIcerik_TblKesilenFatura">
+            <End Role="TblKesilenFatura" EntitySet="TblKesilenFatura" />
+            <End Role="TblKesilenFaturaIcerik" EntitySet="TblKesilenFaturaIcerik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HusteDbModelStoreContainer" CdmEntityContainer="HusteDbEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HusteDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBizeKesilenFatura">
+            <EntityTypeMapping TypeName="HusteDbModel.TblBizeKesilenFatura">
+              <MappingFragment StoreEntitySet="TblBizeKesilenFatura">
+                <ScalarProperty Name="GelenFaturaTarih" ColumnName="GelenFaturaTarih" />
+                <ScalarProperty Name="BizeKesilenFaturaID" ColumnName="BizeKesilenFaturaID" />
+                <ScalarProperty Name="VergiNo" ColumnName="VergiNo" />
+                <ScalarProperty Name="GelenFaturaUnvan" ColumnName="GelenFaturaUnvan" />
+                <ScalarProperty Name="GelenFaturaVergiDairesi" ColumnName="GelenFaturaVergiDairesi" />
+                <ScalarProperty Name="GelenFaturaAdres" ColumnName="GelenFaturaAdres" />
+                <ScalarProperty Name="GelenFaturaVergiNo" ColumnName="GelenFaturaVergiNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBizeKesilenFaturaIcerik">
+            <EntityTypeMapping TypeName="HusteDbModel.TblBizeKesilenFaturaIcerik">
+              <MappingFragment StoreEntitySet="TblBizeKesilenFaturaIcerik">
+                <ScalarProperty Name="GelenFaturaID" ColumnName="GelenFaturaID" />
+                <ScalarProperty Name="GelenFaturaNo" ColumnName="GelenFaturaNo" />
+                <ScalarProperty Name="GelenFaturaUrunAdi" ColumnName="GelenFaturaUrunAdi" />
+                <ScalarProperty Name="GelenFaturaUrunMiktar" ColumnName="GelenFaturaUrunMiktar" />
+                <ScalarProperty Name="GelenFaturaBirimFiyat" ColumnName="GelenFaturaBirimFiyat" />
+                <ScalarProperty Name="GelenFaturaKDVOrani" ColumnName="GelenFaturaKDVOrani" />
+                <ScalarProperty Name="GelenFaturaSatirNo" ColumnName="GelenFaturaSatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblHesap">
+            <EntityTypeMapping TypeName="HusteDbModel.TblHesap">
+              <MappingFragment StoreEntitySet="TblHesap">
+                <ScalarProperty Name="VergiNo" ColumnName="VergiNo" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="VergiDairesi" ColumnName="VergiDairesi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKesilenFatura">
+            <EntityTypeMapping TypeName="HusteDbModel.TblKesilenFatura">
+              <MappingFragment StoreEntitySet="TblKesilenFatura">
+                <ScalarProperty Name="GidenFaturaTarih" ColumnName="GidenFaturaTarih" />
+                <ScalarProperty Name="KesilenFaturaID" ColumnName="KesilenFaturaID" />
+                <ScalarProperty Name="VergiNo" ColumnName="VergiNo" />
+                <ScalarProperty Name="GidenFaturaUnvan" ColumnName="GidenFaturaUnvan" />
+                <ScalarProperty Name="GidenFaturaVergiDairesi" ColumnName="GidenFaturaVergiDairesi" />
+                <ScalarProperty Name="GidenFaturaAdres" ColumnName="GidenFaturaAdres" />
+                <ScalarProperty Name="GidenFaturaVergiNo" ColumnName="GidenFaturaVergiNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKesilenFaturaIcerik">
+            <EntityTypeMapping TypeName="HusteDbModel.TblKesilenFaturaIcerik">
+              <MappingFragment StoreEntitySet="TblKesilenFaturaIcerik">
+                <ScalarProperty Name="GidenFaturaID" ColumnName="GidenFaturaID" />
+                <ScalarProperty Name="KesilanFaturaSatirNo" ColumnName="KesilanFaturaSatirNo" />
+                <ScalarProperty Name="GidenFaturaNo" ColumnName="GidenFaturaNo" />
+                <ScalarProperty Name="GidenFaturaUrunAdi" ColumnName="GidenFaturaUrunAdi" />
+                <ScalarProperty Name="GidenFaturaUrunMiktari" ColumnName="GidenFaturaUrunMiktari" />
+                <ScalarProperty Name="GidenFaturaBirimFiyati" ColumnName="GidenFaturaBirimFiyati" />
+                <ScalarProperty Name="GidenFaturaKDVOrani" ColumnName="GidenFaturaKDVOrani" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblVarliklar">
+            <EntityTypeMapping TypeName="HusteDbModel.TblVarliklar">
+              <MappingFragment StoreEntitySet="TblVarliklar">
+                <ScalarProperty Name="VarlikID" ColumnName="VarlikID" />
+                <ScalarProperty Name="KullaniciVergiNo" ColumnName="KullaniciVergiNo" />
+                <ScalarProperty Name="Girdiler" ColumnName="Girdiler" />
+                <ScalarProperty Name="Ciktilar" ColumnName="Ciktilar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

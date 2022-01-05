@@ -1,0 +1,38 @@
+﻿@using ProjeMVCV1._2.Models.Entity;
+@model ProjeMVCV1._2.Models.Entity.MultipleClass2
+
+
+<table id="FaturaList">
+
+    <tr>
+        <th style="width:24%"> Fatura No </th>
+        <th style="width:64%"> Ünvan  </th>
+        <th style="width:24%"> Tarih </th>
+        <th>Listele</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach (var item in Model.bizeKesilenFaturaDetaylariList)
+    {
+        <tr>
+            <td class="notranslate">@item.BizeKesilenFaturaID</td>
+            <td> @item.GelenFaturaUnvan </td>
+            <td> @Convert.ToDateTime(item.GelenFaturaTarih).ToShortDateString()</td>
+            <td>
+                <a style=" background-color: #8cdd26; border-radius: 5px; color: white;
+            font-weight: bold;" target="_blank" class="göster btn" href="/KesilenFatura/GirisFaturasiGoster/@item.BizeKesilenFaturaID">
+                    Göster
+                </a>
+
+            </td>
+
+            <td>
+                <a style=" background-color: red; border-radius: 5px; color: white;
+            font-weight: bold;" target="_blank" class="göster btn" href="/KesilenFatura/GirisFaturasiSil/@item.BizeKesilenFaturaID">
+                    Sil
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

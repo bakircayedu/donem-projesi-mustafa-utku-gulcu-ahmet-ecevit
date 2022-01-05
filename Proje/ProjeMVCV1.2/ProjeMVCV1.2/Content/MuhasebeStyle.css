@@ -1,0 +1,44 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url('MuhasebeBackground.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: auto;
+}
+
+#canvas {
+    position: relative;
+    top: 85px;
+    left: 80px;
+}
+
+#rakamEkrani {
+    position: absolute;
+    margin: 10px;
+    top: 7%;
+    left: 53%;
+}
+
+.muhasebe {
+    position: relative;
+    width: 450px;
+    margin-bottom: 15px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+span {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.cariler {
+    position: relative;
+    top: 13px;
+    left: 10%;
+    font-size: 34px;
+}

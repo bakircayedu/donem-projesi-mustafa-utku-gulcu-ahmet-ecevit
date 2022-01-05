@@ -1,0 +1,53 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: consolas;
+    background-image: url('Logo.png');
+    background-size: 200px,100px;
+    background-repeat: no-repeat;
+    background-position:relative;
+    background-left:-120px;
+}
+.container {
+    width: 1175px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .card {
+    position: relative;
+    cursor: pointer;
+}
+
+.container .card .face {
+    width: 300px;
+    height: 200px;
+}
+
+.container .card .face.face1 {
+    position: relative;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.container .card:hover .face.face1 {
+    background: #94dd26;
+}
+
+
+.container .card .face.face1 .content h3 {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}

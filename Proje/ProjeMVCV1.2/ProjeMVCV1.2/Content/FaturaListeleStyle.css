@@ -1,0 +1,47 @@
+body{
+	margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image : url('FaturaBackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+}
+#FaturaList {
+  position: relative;
+  top: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#FaturaList td, #FaturaList th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#FaturaList tr:nth-child(even){background-color: #f2f2f2;}
+
+#FaturaList tr:hover {background-color: #ddd;}
+
+#FaturaList th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+#btnSecim{
+  position: relative;
+  top: 50px;
+  margin: 10px;
+
+}
+
+#btn{
+  width: 50px;
+  height: 50px;
+    background-color: #04AA6D;
+  color: white;
+}

@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hustle Kayıt Ekranı</title>
+    <link rel="stylesheet" type="text/css" href="/Content/GirisEkranıCss.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+        .iconbox {
+            position: relative;
+            top: 57px;
+            left: -600px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-image: url('/Content/GirisBackground.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1 align="center">Kullanıcı Kayıt Ekranı</h1>
+        <form role="form" method="post">
+            <div class="inputBox">
+                <input type="text" name="Unvan" autocomplete="off">
+                <label>Unvan</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="VergiNo" autocomplete="off">
+                <label>Vergi No</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="VergiDairesi" autocomplete="off">
+                <label>Vergi Dairesi</label>
+            </div>
+
+            <div class="inputBox">
+                <input type="text" name="Adres" autocomplete="off">
+                <label>Adres</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="Sifre" autocomplete="off">
+                <label>Şifre</label>
+            </div>
+
+            <div><span style="color: white ;position: relative; bottom: 23px; font-size: 16px;">Zaten hesabınız var mı?<a href="/Menu/KullaniciGiris" style="color: #003aff; font-size: 15.99999px;">Buradan giriş yapın</a></span></div>
+
+            <input type="submit" name="singin" value="Kaydet">
+            <label style="color: white; position:relative; top:50px; right: 15px;">@ViewBag.Mesaj</label>
+        </form>
+    </div>
+</body>
+
+</html>

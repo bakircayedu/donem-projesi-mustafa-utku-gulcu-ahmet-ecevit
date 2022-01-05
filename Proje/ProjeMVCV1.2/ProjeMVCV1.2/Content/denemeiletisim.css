@@ -1,0 +1,27 @@
+﻿*{margin:0;padding:0;}
+.center{
+    width:250px;
+    margin: 100px auto;
+}
+
+.linkedin1{
+    float:left;
+    width:40px;
+    height:40px;
+    background:black;
+    transition:background 0.5s;
+    -moz-transition:background 0.5s;
+    -webkit-transition:background 0.5s;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    margin-right:20px;
+    color:white;
+}
+.linkedin1:hover{
+    background-position:0px -32px;
+    cursor:pointer;
+    background: white;
+    color:black;
+    
+}
+

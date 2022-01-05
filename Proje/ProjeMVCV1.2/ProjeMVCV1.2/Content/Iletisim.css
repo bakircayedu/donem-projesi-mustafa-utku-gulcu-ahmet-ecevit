@@ -1,0 +1,73 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+.iconcontainer{
+    position: absolute;
+}
+
+.iconbox {
+    display: flex;
+    width: 55px;
+    height: 58px;
+    position: relative;
+    display: flex;
+    top:210px;
+    right:675px;
+    overflow: hidden;
+    padding: 5px;
+    cursor: pointer;
+    margin: 0.6em;
+    transition: all .4s;
+}
+
+.iconbox:hover {
+    width: 160px;
+    background: #1da0f280;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 0 50px #1da0f280;
+}
+
+.iconbox:nth-child(2):hover {
+    background: #1da0f280;
+    box-shadow: 0 0 50px #1da0f280;
+}
+
+
+p {
+    transform: translate(60px);
+}
+
+.iconbox .icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: all .4s;
+}
+
+.linkedin1,.linkedin2 {
+    background: #1da0f280;
+}
+
+
+.iconbox:hover .icon {
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.26);
+    color: rgb(59, 59, 59);
+}
